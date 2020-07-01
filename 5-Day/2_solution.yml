@@ -1,0 +1,21 @@
+---
+
+- hosts: ios
+  connection: local
+  gather_facts: no
+
+
+  tasks:
+
+  - name: run show commands on IOS
+    ios_config:
+      lines:
+        - permit 192.168.146.0 0.0.1.255
+        - permit 192.168.147.0 0.0.1.255
+        - permit 192.168.148.0 0.0.1.255
+      parents: ip access-list standard test1234
+    register: cmd_op
+
+  - name: printing the output
+    debug:
+      var: cmd_op
