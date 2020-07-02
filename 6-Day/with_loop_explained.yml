@@ -1,0 +1,20 @@
+---
+
+- hosts: ios
+  connection: local
+  gather_facts: no
+
+
+  tasks:
+  - name: run with loop -- first task
+    ios_config:
+      commands: "{{ item }}"
+    with_items:
+        - ip access-list standard test1
+        - ip access-list standard test2
+        - ip access-list standard test3
+    register: cmd_op
+
+  - name: printing the output  -- second task
+    debug:
+      var: cmd_op

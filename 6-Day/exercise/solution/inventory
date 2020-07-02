@@ -1,0 +1,9 @@
+[ios]
+192.168.122.181
+192.168.122.182
+192.168.122.180
+
+
+[all:vars]
+ansible_user=prasad
+ansible_password=1234

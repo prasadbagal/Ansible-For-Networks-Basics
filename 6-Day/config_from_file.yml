@@ -1,0 +1,29 @@
+---
+
+- hosts: ios
+  connection: local
+  gather_facts: no
+#  serial: 1
+
+
+  tasks:
+
+  - name: Include vars of stuff.yaml into the 'my_stuff' variable.
+    include_vars:
+      file: my_variables.yml
+      name: my_stuff
+
+  - name: printing the variables -- I dont want to run
+    debug:
+      var: my_stuff.my_name, my_stuff.my_address, my_stuff.commands
+
+
+  - name: configure with loops
+    ios_config:
+      commands: "no {{ item }}"
+    with_items: "{{ my_stuff.commands }}"
+    register: cmd_op
+
+  - name: priting the output.  -- I dont want to run
+    debug:
+      var: cmd_op
