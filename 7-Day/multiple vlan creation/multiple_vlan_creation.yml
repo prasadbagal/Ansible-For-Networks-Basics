@@ -1,0 +1,35 @@
+---
+
+- hosts: ios
+  gather_facts: no
+  connection: local
+
+  tasks:
+  - name: VLANs before configuration:-
+    ios_command:
+      commands: show vlan
+    register: before_vlan
+
+  - name: printing before vlans
+    debug:
+      var: before_vlan.stdout_lines
+
+
+  - name: configure multiple vlan
+    ios_vlan:
+      vlan_id: "{{vlan_id}}"
+      name: "{{ vlan_name }}"
+      state: "{{ state }}"
+      delay: "{{ delay }}"
+      interfaces: "{{ interfaces }}"
+
+
+  - name: VLANs after  configuration:-
+    ios_command:
+      commands: show vlan
+    register: after_vlan
+
+
+  - name: printing after vlan
+    debug:
+      var: after_vlan.stdout_lines
