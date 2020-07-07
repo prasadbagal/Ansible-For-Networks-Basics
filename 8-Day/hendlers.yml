@@ -1,0 +1,18 @@
+---
+- hosts: ios
+  gather_facts: no
+  connection: local
+
+
+  tasks:
+  - name: config something
+    ios_config:
+      commands: ip access-list standard myac
+    notify:
+      - handler1
+
+
+  handlers:
+  - name: handler1
+    debug:
+      msg: "I am task from handler. Ran successfully.!!!!!!!!!!!!"
