@@ -1,0 +1,35 @@
+---
+- hosts: ios
+  gather_facts: no
+  connection: local
+
+  tasks:
+  - name: add static rouye , print
+    block:
+      - name: add static routes   -- i am from block
+        ios_config:
+          commands:
+            - ip route 172.168.1.1 255.255.255.0 172.168.0.1
+            - ip 1234route 172.168.1.2 255.255.255.0 172.168.0.2
+        register: cmd_op
+
+      - name: priting    - i am from block
+        debug:
+          var: cmd_op
+
+
+    rescue:
+      - name: when anything goes wrong.    -- i am from rescue
+        debug:
+          msg: "above two tasks got failed due to some reasons!!!!!!!!!"
+
+      - name: backing out
+        ios_config:
+          commands:
+            - no ip route 172.168.1.1 255.255.255.0 172.168.0.1
+            - no ip route 172.168.1.1 255.255.255.0 172.168.0.1
+
+    always:     ---- i am always.
+      - name: debug
+        debug:
+          msg: "I dont care, i will execute anyway.!!!!!!!!!!"
