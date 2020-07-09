@@ -1,0 +1,18 @@
+---
+  - name: build IOS inventory report
+    hosts: ios
+    connection: network_cli
+    gather_facts:  False
+
+    tasks:
+
+      - name: gathering IOS facts
+        ios_facts:
+        register: all_facts
+
+      - name: create HTML report
+        template:
+          src: templates/ios_template.j2
+          dest: report-ios.txt
+        delegate_to: localhost
+        run_once: true
