@@ -1,8 +1,0 @@
-Create .vimrc in home directory with below command.
-vi .vimrc
-
-
-
-Add below two lines n .vimrc
-set nocompatible
-set backspace=2

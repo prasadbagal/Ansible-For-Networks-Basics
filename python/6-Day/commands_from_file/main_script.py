@@ -2,7 +2,7 @@
 # Script for executing the commands on remote NW devices,
 # commands should have kept in file 'commmands' in the same dir
 ##############################################################################
-tn.write(b"%b\n" % command.encode('ascii'))
+
 import getpass
 import telnetlib
 

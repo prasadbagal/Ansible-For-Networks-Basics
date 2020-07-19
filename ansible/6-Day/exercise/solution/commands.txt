@@ -1,6 +1,0 @@
-ip access-list standard test1
-ip access-list standard test2
-ip access-list standard test3
-ip route 172.168.0.1 255.255.255.0 172.168.1.1
-ip route 172.168.0.2 255.255.255.0 172.168.1.3
-ip route 172.168.0.3 255.255.255.0 172.168.1.2
