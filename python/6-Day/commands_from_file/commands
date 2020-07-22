@@ -1,6 +1,0 @@
-en
-conf t
-vlan 2
-name Python_vlan_2
-end
-exit

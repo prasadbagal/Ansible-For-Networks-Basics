@@ -1,3 +1,0 @@
-vi .vimrc
-set nocompatible
-set backspace=2
