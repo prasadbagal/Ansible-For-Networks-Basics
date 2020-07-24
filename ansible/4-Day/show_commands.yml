@@ -1,0 +1,16 @@
+---
+- hosts: ios
+  gather_facts: no
+  connection: local
+
+
+
+  tasks:
+  - name: run show version on remote devices
+    ios_command:
+      commands: show version
+    register: output
+
+  - name: print the output
+    debug:
+      var: output
