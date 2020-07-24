@@ -1,0 +1,9 @@
+Ansible Ad-hoc commands:-
+
+ansible ios –m ping –c local –I inventory
+
+ansible ios -m raw -a "show version" -i inventory -u prasad -k
+
+ansible ios -i inventory -m ios_command -a "commands='show version'" -c local -u prasad -k
+
+ansible ios -m ios_config -a "lines='ip access-list standard test1234'" -c local -i inventory -u prasad -k

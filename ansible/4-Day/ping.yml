@@ -1,0 +1,14 @@
+---
+- hosts: ios
+  gather_facts: no
+  connection: local
+
+
+  tasks:
+  - name: ping to remote hosts -------------- 1st task
+    ping:
+    register: outPut
+
+  - name: print the output --------------- 2nd task
+    debug:
+      var: outPut
