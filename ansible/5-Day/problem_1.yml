@@ -1,0 +1,27 @@
+################# SHOW COMMAND OUTPUT TO FILE
+# run 'show version' and 'show ip interface br' on routers and copy the command
+# output in files. file name should be having name in below format "<device ip/hostname>"-output
+
+---
+
+- hosts: ios
+  connection: local
+  gather_facts: no
+
+
+  tasks:
+  - name: run show commands on IOS
+    ios_command:
+      commands:
+        - show version
+        - show ip interface bri
+    register: cmd_op
+
+  - name: printing the output
+    debug:
+      var: cmd_op
+
+  - name: copy output of show commands to file
+    copy:
+      dest: "{{ inventory_hostname}}-output"
+      content: "{{ cmd_op.stdout_lines }}"

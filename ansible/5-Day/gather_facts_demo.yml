@@ -1,0 +1,13 @@
+---
+- hosts: localhost
+  gather_facts: yes
+
+  vars:
+    my_var1: "NetworkEngineer"
+    my_var2: "AutomationEngineer"
+
+
+  tasks:
+  - name: print some variables
+    debug:
+      var: ansible_facts
