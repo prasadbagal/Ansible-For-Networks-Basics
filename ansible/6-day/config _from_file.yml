@@ -1,0 +1,15 @@
+---
+
+- hosts: ios
+  gather_facts: no
+  connection: local
+
+  tasks:
+  - name: config from file
+    ios_config:
+      src: test_config
+    register: cmd_op
+
+  - name: printing
+    debug:
+      var: cmd_op
