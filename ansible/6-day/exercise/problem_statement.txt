@@ -1,0 +1,3 @@
+Write a ansible playbook to push config from file.
+there should be per device configuration file.
+(each device should have separate config file)

@@ -1,0 +1,17 @@
+---
+
+- hosts: ios
+  gather_facts: no
+  connection: local
+
+  tasks:
+  - name: simple config.
+    ios_config:
+      lines:
+        - ip route 192.0.2.0 255.255.255.0 192.0.2.10
+        - ip access-list standard test1
+        - ip access-list extended test1
+    register: cmd_op
+
+  - debug:
+      var: cmd_op
