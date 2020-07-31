@@ -1,0 +1,18 @@
+---
+- hosts: ios
+  connection: network_cli
+  gather_facts: no
+
+
+  tasks:
+  - name: gather information from devices IOS
+    ios_facts:
+    register: all_facts
+
+
+  - name: Create Report
+    template:
+      src: templates/ios_template.j2
+      dest: report-ios.txt
+    delegate_to: localhost
+    run_once: true

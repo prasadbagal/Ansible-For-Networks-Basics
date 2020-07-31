@@ -1,0 +1,39 @@
+---
+- hosts: ios
+  gather_facts: no
+  connection: local
+
+  vars:
+    backout: false
+
+  tasks:
+  - name: Configuaring the devices....
+    ios_config:
+      src: "config/{{ inventory_hostname }}-config"
+      save_when: changed
+    register: cmd_op
+    when: backout == false
+
+
+  - name: print the configs
+    debug:
+      var: cmd_op
+    when: backout == false
+
+  - name: generate the reports.
+    copy:
+      content: "{{ cmd_op.updates }}"
+      dest: "report/{{ inventory_hostname }}-report"
+    when: backout == false
+
+  - name: backout configs
+    ios_config:
+      src: "config/{{ inventory_hostname }}-config-b"
+      save_when: changed
+    register: cmd_op
+    when: backout
+
+  - name: print msg
+    debug:
+      msg: "backout is done!!!!"
+    when: backout

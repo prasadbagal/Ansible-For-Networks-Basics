@@ -1,0 +1,13 @@
+{% for network_device in groups['ios'] %}
+
+            Hostname :- {{hostvars[network_device]['ansible_net_hostname']}}
+            Device Model :- {{hostvars[network_device]['ansible_net_model']}}
+            Device Version :- {{hostvars[network_device]['ansible_net_version']}}
+            Device Image:- {{ hostvars[network_device]['ansible_net_image']}}
+            Serial Number:- {{ hostvars[network_device]['ansible_net_serialnum']}}
+            IOS Type:- {{ hostvars[network_device]['ansible_net_iostype'] }}
+            API info:- {{ hostvars[network_device]['ansible_net_api'] }}
+            INterfaces:- {% for i in  hostvars[network_device]['ansible_net_interfaces'].keys() %}
+                         {{ i }}
+                         {% endfor %}
+{% endfor %}
