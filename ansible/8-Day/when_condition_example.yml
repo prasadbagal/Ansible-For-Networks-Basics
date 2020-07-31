@@ -1,0 +1,15 @@
+---
+
+- hosts: ios
+  gather_facts: no
+  connection: local
+
+  vars:
+    my_var: "network"
+
+
+  tasks:
+  - name: print
+    debug:
+      msg: "Hi {{my_var}} engineer!!"
+    when: my_var == "network"

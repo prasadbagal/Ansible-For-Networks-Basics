@@ -1,0 +1,21 @@
+no ip access-list standard s3
+no ip access-list standard ss3
+
+interface GigabitEthernet2/0
+ no description this is from s3
+ no switchport mode access
+ no switchport access vlan 500
+!
+interface GigabitEthernet2/2
+ no switchport mode access
+ no description this is from s3
+ no switchport access vlan 501
+!
+interface GigabitEthernet2/1
+ no switchport mode access
+ no description this is from s3
+ no switchport access vlan 502
+!
+no vlan 500
+no vlan 501
+no vlan 502

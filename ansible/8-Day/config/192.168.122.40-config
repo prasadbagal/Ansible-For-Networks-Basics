@@ -1,0 +1,40 @@
+ip access-list standard s1
+ permit 192.168.146.0 0.0.1.255
+ permit 192.169.146.0 0.0.1.255
+ permit 192.167.146.0 0.0.1.255
+ permit 192.163.146.0 0.0.1.255
+ permit 192.164.146.0 0.0.1.255
+ permit 192.162.146.0 0.0.1.255
+!
+ip access-list standard ss1
+ permit 192.168.141.0 0.0.1.255
+ permit 192.169.142.0 0.0.1.255
+ permit 192.167.144.0 0.0.1.255
+ permit 192.163.145.0 0.0.1.255
+ permit 192.164.146.0 0.0.1.255
+ permit 192.162.147.0 0.0.1.255
+!
+vlan 500
+ name test_500
+ mtu 1522
+!
+vlan 501
+ name test_501
+ mtu 1522
+! 
+vlan 502
+ name test_502
+ mtu 1522
+! 
+interface GigabitEthernet1/0
+ switchport mode access
+ switchport access vlan 500
+!
+interface GigabitEthernet1/2
+ switchport mode access
+ switchport access vlan 501
+!
+interface GigabitEthernet1/3
+ switchport mode access
+ switchport access vlan 502
+!
