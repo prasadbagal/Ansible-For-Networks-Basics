@@ -1,0 +1,27 @@
+#Try Rescue Block
+
+---
+- hosts: ios
+  gather_facts: no
+  connection: network_cli
+
+  tasks:
+  - name: my block
+    block:
+    - name: static route
+      ios_config:
+        lines: ip access-list standard automation123
+        save_when: changed
+      register: cmd_op
+
+
+
+    rescue:
+
+    - name: static route 2
+      ios_config:
+        lines: ip route 192.168.2.9 255.255.255.0 172.168.39.36
+    always:
+    - name: i am always
+      debug:
+        msg: "i dont care i will run anyway!!"
