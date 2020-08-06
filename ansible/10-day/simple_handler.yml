@@ -1,0 +1,21 @@
+#Handlers in ansible.
+---
+- hosts: ios
+  gather_facts: no
+  connection: network_cli
+
+  tasks:
+  - name: static route
+    ios_config:
+      lines: ip access-list standard automation123
+      save_when: changed
+    register: cmd_op
+
+    notify:
+      static route 2
+
+  handlers:
+i
+  - name: static route 2
+    ios_config:
+      lines: ip route 192.168.2.9 255.255.255.0 172.168.39.36
