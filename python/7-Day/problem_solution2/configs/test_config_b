@@ -1,0 +1,9 @@
+no ip access-list standard paramikoTest
+interface GigabitEthernet1/0
+no switchport mode access
+no switchport access vlan 500
+interface GigabitEthernet1/2
+no switchport mode access
+no switchport access vlan 501
+end
+wr
