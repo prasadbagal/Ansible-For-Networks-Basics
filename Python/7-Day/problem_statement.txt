@@ -1,0 +1,16 @@
+Problem_statemet 1.
+Run show version command on host and check if GigabitEthernet3/1 is down
+if down, add interface description to it as "I am not active."
+if up then add interface description to it as "I am not active."
+
+
+Problem_statemet 1.
+
+step1:-
+        Take backup of running config in text file.
+step2:
+        Push config file to network device using paramiko module.
+        if push fails rever the config with backup config file.
+
+step3:
+        Also create file which will contain the report of configured commands and backout commands.

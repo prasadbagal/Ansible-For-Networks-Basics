@@ -1,0 +1,15 @@
+ip access-list standard paramikoTest
+permit 192.168.146.0 0.0.1.255
+permit 192.169.146.0 0.0.1.255
+permit 192.167.146.0 0.0.1.255
+permit 192.163.146.0 0.0.1.255
+permit 192.164.146.0 0.0.1.255
+permit 192.162.146.0 0.0.1.255
+interface GigabitEthernet1/0
+switchport mode access
+switchport access vlan 500
+interface GigabitEthernet1/2
+switchport mode access
+switchport access vlan 501
+end
+wr
